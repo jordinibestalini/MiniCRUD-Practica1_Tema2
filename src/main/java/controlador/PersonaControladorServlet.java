@@ -11,6 +11,7 @@ import modelo.vo.PersonaVO;
 @WebServlet("/persona")
 public class PersonaControladorServlet extends HttpServlet {
     private final PersonaDAO dao = new PersonaDAO();
+    
 
     // ======================== GET ========================
     @Override
@@ -63,6 +64,7 @@ public class PersonaControladorServlet extends HttpServlet {
             throws IOException {
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nombre = request.getParameter("nombre");
+        double sueldo = Double.parseDouble(request.getParameter("sueldo"));      
         dao.agregar(new PersonaVO(codigo, nombre));
         response.sendRedirect(request.getContextPath() + "/persona"); // PRG → listar
     }
